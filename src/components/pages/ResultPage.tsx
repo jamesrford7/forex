@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, Button } from 'react-native';
 
+import withEmulatorWarning from '../hoc/withEmulatorWarning';
+
 export interface IResultPage {
     currencyCode: string,
     inputAmount: number,
@@ -8,7 +10,7 @@ export interface IResultPage {
     onHomePress: () => {},
 }
 
-export default class ResultPage extends React.PureComponent<IResultPage> {
+class ResultPage extends React.PureComponent<IResultPage> {
     render() {
         return (
             <View>
@@ -19,3 +21,5 @@ export default class ResultPage extends React.PureComponent<IResultPage> {
         )
     }
 }
+
+export default withEmulatorWarning(ResultPage);

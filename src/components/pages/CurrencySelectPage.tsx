@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Picker, Button } from 'react-native';
 import { List } from 'immutable';
 
-import getEmulator from '../../native-modules/emulatorModule';
+import withEmulatorWarning from '../hoc/withEmulatorWarning';
 
 export type Currency = {
     name: string,
@@ -19,26 +19,15 @@ export interface ICurrencySelectPageState {
     selectedCode: string
 }
 
-export default class CurrencySelectPage extends React.PureComponent<ICurrencySelectPageProps, ICurrencySelectPageState> {
+class CurrencySelectPage extends React.PureComponent<ICurrencySelectPageProps, ICurrencySelectPageState> {
 
     readonly state: ICurrencySelectPageState = {
         selectedCode: this.props.currencies.first().code,
-        emulatorText: '',
-    }
-
-    componentDidMount() {
-        getEmulator()
-            .then((emulatorText) => {
-                this.setState({
-                    emulatorText: emulatorText
-                });
-            });
     }
 
     render() {
         return (
             <View>
-                <Text>{this.state.emulatorText}</Text>
                 <Text>Select currency to convert to</Text>
                 <Picker 
                     onValueChange={(newValue) => {
@@ -62,3 +51,5 @@ export default class CurrencySelectPage extends React.PureComponent<ICurrencySel
         );
     }
 }
+
+export default withEmulatorWarning(CurrencySelectPage);

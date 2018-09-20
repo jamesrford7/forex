@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, TextInput, Button } from 'react-native';
 
+import withEmulatorWarning from '../hoc/withEmulatorWarning';
+
 export interface IAmountInputProps {
     currencyCode: string;
     currencyRate: number;
@@ -8,7 +10,7 @@ export interface IAmountInputProps {
     onProceed: () => void;
 }
 
-export default class AmountInputPage extends React.PureComponent<IAmountInputProps> {
+class AmountInputPage extends React.PureComponent<IAmountInputProps> {
 
     render() {
         return (
@@ -24,3 +26,5 @@ export default class AmountInputPage extends React.PureComponent<IAmountInputPro
         );
     }
 }
+
+export default withEmulatorWarning(AmountInputPage);
