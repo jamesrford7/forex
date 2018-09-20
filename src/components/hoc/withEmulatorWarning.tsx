@@ -1,5 +1,5 @@
 import React from 'React';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 import getEmulator from '../../native-modules/emulatorModule';
 
@@ -22,11 +22,19 @@ const withEmulatorWarning = (Page) => {
             return (
                 <View>
                     <Page {...this.props} />
-                    <Text>{this.state.emulatorText}</Text>
+                    <Text style={styles.text}>{this.state.emulatorText}</Text>
                 </View>
             );
         }
     }
 }
+
+const styles = StyleSheet.create({
+    text: {
+        paddingVertical: 10,
+        paddingHorizontal: 15,
+        color: 'red',
+    }
+})
 
 export default withEmulatorWarning;

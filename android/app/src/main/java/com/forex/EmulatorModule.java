@@ -21,10 +21,10 @@ public class EmulatorModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void getEmulatorStatus(Promise promise) {
         if (Build.FINGERPRINT.contains("generic")) {
-                promise.resolve("You are running on an emulator");
+                promise.resolve("You are running on the Android emulator");
         }
         else {
-            promise.resolve("You are running on a real device");
+            promise.resolve("You are running on a real Android device");
         }
     }
 }
