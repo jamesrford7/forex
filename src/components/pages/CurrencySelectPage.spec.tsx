@@ -5,14 +5,24 @@ import { Text, Picker, Button } from 'react-native';
 
 import { List } from 'immutable';
 
-import CurrencySelectPage, { Currency } from './CurrencySelectPage';
+import { CurrencySelectPage, Currency } from './CurrencySelectPage';
 
 describe('CurrencySelectPage', () => {
 
-    const currencies = List<Currency>([{name: 'US Dollar', code: 'USD'}, {name: 'Japanese Yen', code: 'JPY'}]);
-    const onNext = jest.fn();
+    const currencies = List<Currency>([
+        {name: 'US Dollar', code: 'USD'}, 
+        {name: 'Japanese Yen', code: 'JPY'}
+    ]);
 
-    const wrapper: ShallowWrapper<CurrencySelectPage> = shallow(<CurrencySelectPage currencies={currencies} onNext={onNext} />);
+    const onChangeCurrency = jest.fn();
+    const onProceed = jest.fn();
+
+    const wrapper: ShallowWrapper<CurrencySelectPage> = shallow(
+        <CurrencySelectPage
+            currencies={currencies}
+            onChangeCurrency={onChangeCurrency}
+            onProceed={onProceed} 
+        />);
 
     describe('Text Labels', () => {
         describe('Header', () => {
@@ -20,7 +30,7 @@ describe('CurrencySelectPage', () => {
                 expect(wrapper
                     .find(Text)
                     .first()
-                    .text()).toEqual('Select currency to convert to:');
+                    .text()).toEqual('Convert Pound Sterling to :');
             });
         });
 
@@ -69,8 +79,12 @@ describe('CurrencySelectPage', () => {
                 .simulate('valueChange', currencies.last().code);
 
             it('should correctly change the state on picker value change', () => {
-                expect(wrapper.state().selectedCode).toBe(currencies.last());
+                expect(wrapper.state().selectedCode).toBe(currencies.last().code);
             });
+
+            it('should call the currency change handler', () => {
+                expect(onChangeCurrency).toHaveBeenCalledWith(currencies.last().code)
+            })
 
             it('should update the friendly name Text element', () => {
                 expect(wrapper
@@ -96,7 +110,7 @@ describe('CurrencySelectPage', () => {
 
         it('should call the button\'s handler function', () => {
             wrapper.find(Button).first().simulate('press');
-            expect(onNext).toHaveBeenCalled();
+            expect(onProceed).toHaveBeenCalled();
         });
     });
 })

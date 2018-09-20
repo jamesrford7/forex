@@ -10,7 +10,7 @@ export interface IResultPage {
     onHomePress: () => {},
 }
 
-class ResultPage extends React.PureComponent<IResultPage> {
+export class ResultPage extends React.PureComponent<IResultPage> {
     render() {
         return (
             <View style={styles.container}>

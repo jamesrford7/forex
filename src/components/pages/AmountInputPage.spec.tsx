@@ -3,20 +3,20 @@ import { Text, TextInput, Button } from 'react-native';
 
 import { shallow, ShallowWrapper } from 'enzyme';
 
-import AmountInputPage from './AmountInputPage';
+import { AmountInputPage } from './AmountInputPage';
 
 describe('AmountInputPage', () => {
-    const currencyToConvert = 'JPY';
+    const currencyCode = 'JPY';
     const currencyRate = 120;
     const onCurrencyInputChange = jest.fn();
-    const onNext = jest.fn();
+    const onProceed = jest.fn();
 
     const wrapper: ShallowWrapper<AmountInputPage> = shallow(
         <AmountInputPage 
-            currencyToConvert={currencyToConvert}
+            currencyCode={currencyCode}
             currencyRate={currencyRate}
             onCurrencyInputChange={onCurrencyInputChange}
-            onNext={onNext} />
+            onProceed={onProceed} />
     )
 
     describe('Text labels', () => {
@@ -30,7 +30,7 @@ describe('AmountInputPage', () => {
             expect(wrapper
                 .find(Text)
                 .first()
-                .text()).toEqual(`Converting to: ${currencyToConvert}`);
+                .text()).toEqual(`Converting to: ${currencyCode}`);
         })
 
         it('should render the correct label for the destination current exchange rate', () => {
@@ -81,7 +81,7 @@ describe('AmountInputPage', () => {
 
         it('should call the button\'s handler function', () => {
             wrapper.find(Button).first().simulate('press');
-            expect(onNext).toHaveBeenCalled();
+            expect(onProceed).toHaveBeenCalled();
         });
     });
 });

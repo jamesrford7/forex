@@ -10,7 +10,7 @@ export interface IAmountInputProps {
     onProceed: () => void;
 }
 
-class AmountInputPage extends React.PureComponent<IAmountInputProps> {
+export class AmountInputPage extends React.PureComponent<IAmountInputProps> {
 
     render() {
         return (

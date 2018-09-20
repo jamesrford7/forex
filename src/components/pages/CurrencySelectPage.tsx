@@ -19,7 +19,7 @@ export interface ICurrencySelectPageState {
     selectedCode: string
 }
 
-class CurrencySelectPage extends React.PureComponent<ICurrencySelectPageProps, ICurrencySelectPageState> {
+export class CurrencySelectPage extends React.PureComponent<ICurrencySelectPageProps, ICurrencySelectPageState> {
 
     readonly state: ICurrencySelectPageState = {
         selectedCode: this.props.currencies.first().code,

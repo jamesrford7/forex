@@ -3,16 +3,20 @@ import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 import { Text, Button } from 'react-native';
 
-import ResultPage from './ResultPage';
+import { ResultPage } from './ResultPage';
 
 describe('ResultPage', () => {
-    const currencyToConvert = 'JPY';
-    const gbpAmount = 100;
-    const destinationCurrencyAmount = 12000;
+    const currencyCode = 'JPY';
+    const inputAmount = 100;
+    const outputAmount = 12000;
     const onHomePress = jest.fn();
 
     const wrapper: ShallowWrapper<ResultPage> = shallow(
-        <ResultPage currencyToConvert={currencyToConvert} gbpAmount={gbpAmount} destinationCurrencyAmount={destinationCurrencyAmount} onHomePress={onHomePress} />
+        <ResultPage 
+            currencyCode={currencyCode}
+            inputAmount={inputAmount}
+            outputAmount={outputAmount}
+            onHomePress={onHomePress} />
     )
 
     describe('Text Labels', () => {
@@ -26,14 +30,14 @@ describe('ResultPage', () => {
             expect(wrapper
                 .find(Text)
                 .first()
-                .text()).toEqual(`${gbpAmount} GBP is equal to:`);
+                .text()).toEqual(`${inputAmount} GBP is equal to:`);
         });
 
         it('should output the correct text for the GBP information', () => {
             expect(wrapper
                 .find(Text)
                 .last()
-                .text()).toEqual(`${destinationCurrencyAmount} ${currencyToConvert}`);
+                .text()).toEqual(`${outputAmount} ${currencyCode}`);
         });
     });
 
