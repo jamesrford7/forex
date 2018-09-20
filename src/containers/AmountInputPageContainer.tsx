@@ -1,4 +1,4 @@
-import { connect } from 'react-redux';
+import { connect, MapDispatchToProps } from 'react-redux';
 import { List } from 'immutable';
 
 import AmountInputPage from '../components/pages/AmountInputPage';
