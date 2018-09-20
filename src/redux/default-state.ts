@@ -37,6 +37,6 @@ export default {
         },
     ],
     selectedCurrencyCode: 'USD',
-    inputAmount: 2,
+    inputAmount: 0,
     outputAmount: 0,
 }
