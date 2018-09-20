@@ -65,7 +65,7 @@ describe('CurrencySelectPage', () => {
         });
     });
 
-    describe('Button', () => {
+    describe('Next Button', () => {
         it('should render a Button', () => {
             expect(wrapper.find(Button).length).toBe(1);
         })

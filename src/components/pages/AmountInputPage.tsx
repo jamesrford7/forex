@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, Text, TextInput } from 'react-native';
+import { View, Text, TextInput, Button } from 'react-native';
 
 export interface IAmountInputProps {
     currencyToConvert: string;
     currencyRate: number;
     onCurrencyInputChange: (newValue: string) => void;
+    onNext: () => void,
 }
 
 export default class AmountInputPage extends React.PureComponent<IAmountInputProps> {
@@ -18,6 +19,7 @@ export default class AmountInputPage extends React.PureComponent<IAmountInputPro
                     keyboardType='numeric'
                     onChangeText={this.props.onCurrencyInputChange}
                 />
+                <Button title="next" onPress={this.props.onNext} />
             </View>
         );
     }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, TextInput } from 'react-native';
+import { Text, TextInput, Button } from 'react-native';
 
 import { shallow, ShallowWrapper } from 'enzyme';
 
@@ -9,12 +9,14 @@ describe('AmountInputPage', () => {
     const currencyToConvert = 'JPY';
     const currencyRate = 120;
     const onCurrencyInputChange = jest.fn();
+    const onNext = jest.fn();
 
     const wrapper: ShallowWrapper<AmountInputPage> = shallow(
         <AmountInputPage 
             currencyToConvert={currencyToConvert}
             currencyRate={currencyRate}
-            onCurrencyInputChange={onCurrencyInputChange} />
+            onCurrencyInputChange={onCurrencyInputChange}
+            onNext={onNext} />
     )
 
     describe('Text labels', () => {
@@ -61,6 +63,25 @@ describe('AmountInputPage', () => {
                 .simulate('changeText', '123');
 
             expect(onCurrencyInputChange).toHaveBeenCalledWith('123');
+        });
+    });
+
+    describe('Next Button', () => {
+        it('should render a Button', () => {
+            expect(wrapper.find(Button).length).toBe(1);
+        })
+
+        it('should render the button with the correct label', () => {
+            expect(wrapper
+                .find(Button)
+                .first()
+                .props()
+                .title).toEqual('next');
+        });
+
+        it('should call the button\'s handler function', () => {
+            wrapper.find(Button).first().simulate('press');
+            expect(onNext).toHaveBeenCalled();
         });
     });
 });
