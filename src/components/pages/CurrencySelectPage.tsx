@@ -12,25 +12,31 @@ export interface ICurrencySelectPageProps {
     onNext: () => void,
 }
 
-export default class CurrencySelectPage extends React.PureComponent<ICurrencySelectPageProps> {
+export interface ICurrencySelectPageState {
+    selectedValue: string
+}
 
-    readonly state = {
-        selectedValue: this.props.currencies.first()
+export default class CurrencySelectPage extends React.PureComponent<ICurrencySelectPageProps, ICurrencySelectPageState> {
+
+    readonly state: ICurrencySelectPageState = {
+        selectedValue: this.props.currencies.first().name
     }
 
     render() {
-        return <View>
-            <Text>Selecty currency to convert to</Text>
-            <Picker 
-                onValueChange={(newValue) => {this.setState({selectedValue: newValue})}}
-                selectedValue={this.state.selectedValue}>
-                {
-                    this.props.currencies.map(({name, id}) => (
-                        <Picker.Item label={name} value={id} />
-                    ))
-                }
-            </Picker>
-            <Button title="next" onPress={this.props.onNext} />
-        </View>
+        return (
+            <View>
+                <Text>Select currency to convert to</Text>
+                <Picker 
+                    onValueChange={(newValue) => {this.setState({selectedValue: newValue})}}
+                    selectedValue={this.state.selectedValue}>
+                    {
+                        this.props.currencies.map(({name, id}) => (
+                            <Picker.Item label={name} value={id} />
+                        ))
+                    }
+                </Picker>
+                <Button title="next" onPress={this.props.onNext} />
+            </View>
+        );
     }
 }
