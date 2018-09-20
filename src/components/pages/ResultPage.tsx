@@ -5,6 +5,7 @@ export interface IResultPage {
     currencyCode: string,
     inputAmount: number,
     outputAmount: number,
+    onHomePress: () => {},
 }
 
 export default class ResultPage extends React.PureComponent<IResultPage> {
@@ -13,7 +14,7 @@ export default class ResultPage extends React.PureComponent<IResultPage> {
             <View>
                 <Text>{`${this.props.inputAmount} GBP is equal to:`}</Text>
                 <Text>{`${this.props.outputAmount} ${this.props.currencyCode}`}</Text>
-                <Button title="Go home" onPress={() => {}} />
+                <Button title="Go home" onPress={this.props.onHomePress} />
             </View>
         )
     }

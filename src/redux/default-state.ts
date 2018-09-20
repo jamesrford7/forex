@@ -15,6 +15,11 @@ export default {
             code: 'EUR',
             exchangeRate: 0.8,
         },
+        {
+            name: 'Australian Dollar',
+            code: 'AUD',
+            exchangeRate: 0.5,
+        },
     ],
     selectedCurrencyCode: 'USD',
     inputAmount: 2,

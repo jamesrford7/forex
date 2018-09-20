@@ -15,6 +15,8 @@ import CurrencySelectPageContainer from './src/containers/CurrencySelectPageCont
 import AmountInputPageContainer from './src/containers/AmountInputPageContainer';
 import ResultPageContainer from './src/containers/ResultPageContainer';
 
+import Navigation from './src/navigation/navigator';
+
 const App = () => (
 	// <CurrencySelectPage currencies={currencies} onNext={() => {}}/>
 	// <AmountInputPage currencyToConvert="JPY" currencyRate={120} onCurrencyInputChange={() => {}} />
@@ -22,7 +24,8 @@ const App = () => (
 	<Provider store={store}>
 		{/* <AmountInputPageContainer /> */}
 		{/* <CurrencySelectPageContainer /> */}
-		<ResultPageContainer />
+		{/* <ResultPageContainer /> */}
+		<Navigation />
 	</Provider>
 )
 

@@ -625,6 +625,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-navigation@^2.0.21":
+  version "2.0.21"
+  resolved "https://registry.yarnpkg.com/@types/react-navigation/-/react-navigation-2.0.21.tgz#b2642090268617218dce413490348532a3b49914"
+  dependencies:
+    "@types/react" "*"
+    "@types/react-native" "*"
+
 "@types/react-redux@^6.0.7":
   version "6.0.7"
   resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-6.0.7.tgz#ac61cd8d137ca7205b831d66e279f42fe2a1c3cd"

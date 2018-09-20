@@ -5,6 +5,7 @@ export interface IAmountInputProps {
     currencyCode: string;
     currencyRate: number;
     onCurrencyInputChange: (newValue: string) => void;
+    onProceed: () => void;
 }
 
 export default class AmountInputPage extends React.PureComponent<IAmountInputProps> {
@@ -18,7 +19,7 @@ export default class AmountInputPage extends React.PureComponent<IAmountInputPro
                     keyboardType='numeric'
                     onChangeText={this.props.onCurrencyInputChange}
                 />
-                <Button title="next" onPress={() => {}} />
+                <Button title="next" onPress={this.props.onProceed} />
             </View>
         );
     }

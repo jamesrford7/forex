@@ -15,11 +15,12 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         onCurrencyInputChange: (newValue: string) => {
             dispatch(changeAmount(newValue))
-        }
+        },
+        onProceed: () => ownProps.navigation.navigate('Result')
     }
 }
 

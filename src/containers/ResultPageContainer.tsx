@@ -14,6 +14,13 @@ const mapStateToProps = state => {
     }
 }
 
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        onHomePress: () => ownProps.navigation.popToTop()
+    }
+}
+
 export default connect(
     mapStateToProps,
+    mapDispatchToProps,
 )(ResultPage);
