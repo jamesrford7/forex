@@ -4,7 +4,7 @@ import { List } from 'immutable';
 
 export type Currency = {
     name: string,
-    id: string,
+    code: string,
 }
 
 export interface ICurrencySelectPageProps {
@@ -13,13 +13,13 @@ export interface ICurrencySelectPageProps {
 }
 
 export interface ICurrencySelectPageState {
-    selectedValue: string
+    selectedCode: string
 }
 
 export default class CurrencySelectPage extends React.PureComponent<ICurrencySelectPageProps, ICurrencySelectPageState> {
 
     readonly state: ICurrencySelectPageState = {
-        selectedValue: this.props.currencies.first().name
+        selectedCode: this.props.currencies.first().code
     }
 
     render() {
@@ -27,14 +27,19 @@ export default class CurrencySelectPage extends React.PureComponent<ICurrencySel
             <View>
                 <Text>Select currency to convert to</Text>
                 <Picker 
-                    onValueChange={(newValue) => {this.setState({selectedValue: newValue})}}
-                    selectedValue={this.state.selectedValue}>
+                    onValueChange={(newValue) => {this.setState({selectedCode: newValue})}}
+                    selectedValue={this.state.selectedCode}>
                     {
-                        this.props.currencies.map(({name, id}) => (
-                            <Picker.Item label={name} value={id} />
+                        this.props.currencies.map(({_, code}) => (
+                            <Picker.Item label={code} value={code} />
                         ))
                     }
                 </Picker>
+                <Text>{this.props.currencies
+                    .filter(
+                        ({_, code}) => code === this.state.selectedCode)
+                        .first().name}
+                </Text>
                 <Button title="next" onPress={this.props.onNext} />
             </View>
         );

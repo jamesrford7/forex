@@ -6,12 +6,12 @@ import ResultPage from './src/components/pages/ResultPage';
 
 import { List } from 'immutable';
 
-const currencies = List<Currency>([{name: 'US Dollar', id: 'USD'}, {name: 'Japanese Yen', id: 'JPY'}]);
+const currencies = List<Currency>([{name: 'US Dollar', code: 'USD'}, {name: 'Japanese Yen', code: 'JPY'}]);
 
 const App = () => (
-	// <CurrencySelectPage currencies={currencies} onNext={() => {}}/>
+	<CurrencySelectPage currencies={currencies} onNext={() => {}}/>
 	// <AmountInputPage currencyToConvert="JPY" currencyRate={120} onCurrencyInputChange={() => {}} />
-	<ResultPage gbpAmount={100} currencyToConvert='JPY' destinationCurrencyAmount={12000} onHomePress={() => {}} />
+	// <ResultPage gbpAmount={100} currencyToConvert='JPY' destinationCurrencyAmount={12000} onHomePress={() => {}} />
 )
 
 export default App;

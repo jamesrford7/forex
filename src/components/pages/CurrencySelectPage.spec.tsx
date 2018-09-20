@@ -9,21 +9,28 @@ import CurrencySelectPage, { Currency } from './CurrencySelectPage';
 
 describe('CurrencySelectPage', () => {
 
-    const currencies = List<Currency>([{name: 'US Dollar', id: 'USD'}, {name: 'Japanese Yen', id: 'JPY'}]);
+    const currencies = List<Currency>([{name: 'US Dollar', code: 'USD'}, {name: 'Japanese Yen', code: 'JPY'}]);
     const onNext = jest.fn();
 
     const wrapper: ShallowWrapper<CurrencySelectPage> = shallow(<CurrencySelectPage currencies={currencies} onNext={onNext} />);
 
-    describe('Header', () => {
-        it('should render a Text header', () => {
-            expect(wrapper.find(Text).length).toBe(1);
+    describe('Text Labels', () => {
+        describe('Header', () => {
+            it('should render the header with the correct text', () => {
+                expect(wrapper
+                    .find(Text)
+                    .first()
+                    .text()).toEqual('Select currency to convert to:');
+            });
         });
 
-        it('should render the header with the correct text', () => {
-            expect(wrapper
-                .find(Text)
-                .first()
-                .text()).toEqual('Select currency to convert to:');
+        describe('Friendly currency label', () => {
+            it('should render a friendly currency name with the first in the list by default', () => {
+                expect(wrapper
+                    .find(Text)
+                    .first()
+                    .text()).toEqual(currencies.first().name);
+            });
         });
     });
 
@@ -51,17 +58,26 @@ describe('CurrencySelectPage', () => {
                 .find(Picker.Item)
                 .forEach((item, index) => {
                     expect(item.props().label).toBe(currencies.get(index).name)
-                    expect(item.props().value).toBe(currencies.get(index).id)
+                    expect(item.props().value).toBe(currencies.get(index).code)
                 })
         });
     
-        it('should correctly change the state on picker value change', () => {
+        describe('Picker changes', () => {
             wrapper
                 .find(Picker)
                 .first()
-                .simulate('valueChange', currencies.last().name);
-            
-            expect(wrapper.state().selectedValue).toBe(currencies.last());
+                .simulate('valueChange', currencies.last().code);
+
+            it('should correctly change the state on picker value change', () => {
+                expect(wrapper.state().selectedCode).toBe(currencies.last());
+            });
+
+            it('should update the friendly name Text element', () => {
+                expect(wrapper
+                    .find(Text)
+                    .last()
+                    .text()).toEqual(currencies.last().name);
+            });
         });
     });
 
