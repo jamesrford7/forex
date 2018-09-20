@@ -4,12 +4,9 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest --config jest.config.json"
   },
   "dependencies": {
-    "@types/react-native-modalbox": "^1.4.7",
-    "@types/react-redux": "^6.0.7",
-    "@types/redux-actions": "^2.3.0",
     "immutable": "^3.8.2",
     "react": "16.4.1",
     "react-native": "0.56.0",
@@ -17,20 +14,28 @@
     "react-native-swiper": "^1.5.13",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
-    "redux-actions": "^2.6.1",
-    "reselect": "^3.0.1"
+    "redux-actions": "^2.6.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.1.0",
+    "@types/react-native-modalbox": "^1.4.7",
+    "@types/react-redux": "^6.0.7",
+    "@types/redux-actions": "^2.3.0",
+    "@types/enzyme": "^3.1.14",
+    "@types/enzyme-adapter-react-16": "^1.0.3",
+    "@types/jest": "^23.3.2",
     "@types/react": "^16.4.13",
     "@types/react-native": "^0.56.17",
-    "babel-jest": "23.4.2",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.6.0",
+    "babel-plugin-jest-hoist": "^23.2.0",
     "babel-preset-react-native": "^5",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
     "jest": "23.5.0",
     "react-native-typescript-transformer": "^1.2.10",
     "react-test-renderer": "16.4.1",
+    "ts-jest": "^23.10.0",
     "typescript": "^3.0.3"
-  },
-  "jest": {
-    "preset": "react-native"
   }
 }
