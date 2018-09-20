@@ -9,7 +9,7 @@ export type Currency = {
 
 export interface ICurrencySelectPageProps {
     currencies: List<Currency>,
-    onNext: () => void,
+    onChangeCurrency: (newValue: string) => void,
 }
 
 export interface ICurrencySelectPageState {
@@ -27,11 +27,14 @@ export default class CurrencySelectPage extends React.PureComponent<ICurrencySel
             <View>
                 <Text>Select currency to convert to</Text>
                 <Picker 
-                    onValueChange={(newValue) => {this.setState({selectedCode: newValue})}}
+                    onValueChange={(newValue) => {
+                        this.setState({selectedCode: newValue})
+                        this.props.onChangeCurrency(newValue);
+                    }}
                     selectedValue={this.state.selectedCode}>
                     {
                         this.props.currencies.map(({_, code}) => (
-                            <Picker.Item label={code} value={code} />
+                            <Picker.Item label={code} value={code} key={code} />
                         ))
                     }
                 </Picker>
@@ -40,7 +43,7 @@ export default class CurrencySelectPage extends React.PureComponent<ICurrencySel
                         ({_, code}) => code === this.state.selectedCode)
                         .first().name}
                 </Text>
-                <Button title="next" onPress={this.props.onNext} />
+                <Button title="next" onPress={() => {}} />
             </View>
         );
     }
