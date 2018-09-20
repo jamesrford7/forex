@@ -13,14 +13,16 @@ import { List } from 'immutable';
 
 import CurrencySelectPageContainer from './src/containers/CurrencySelectPageContainer';
 import AmountInputPageContainer from './src/containers/AmountInputPageContainer';
+import ResultPageContainer from './src/containers/ResultPageContainer';
 
 const App = () => (
 	// <CurrencySelectPage currencies={currencies} onNext={() => {}}/>
 	// <AmountInputPage currencyToConvert="JPY" currencyRate={120} onCurrencyInputChange={() => {}} />
 	// <ResultPage gbpAmount={100} currencyToConvert='JPY' destinationCurrencyAmount={12000} onHomePress={() => {}} />
 	<Provider store={store}>
-		<AmountInputPageContainer />
+		{/* <AmountInputPageContainer /> */}
 		{/* <CurrencySelectPageContainer /> */}
+		<ResultPageContainer />
 	</Provider>
 )
 

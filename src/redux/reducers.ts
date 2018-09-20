@@ -1,4 +1,4 @@
-import { createAction, handleAction, handleActions } from 'redux-actions';
+import { createAction, handleActions } from 'redux-actions';
 import defaultState from './default-state';
 
 export const changeCurrency = createAction(
@@ -10,15 +10,6 @@ export const changeAmount = createAction(
     'CHANGE_AMOUNT',
     (amount: string) => parseInt(amount)
 )
-
-// const reducer = handleAction(
-//     changeCurrency,
-//     (state, action) => ({
-//         ...state,
-//         selectedCurrencyCode: action.payload
-//     }),
-//     defaultState
-// )
 
 const reducer = handleActions(
     {
