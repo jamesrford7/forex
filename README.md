@@ -13,7 +13,7 @@ A simple 3 page app that converts GBP to various currencies made available in a 
 
 * Run `npm install` or `yarn` to gather all the dependencie
 * For iOS run `react-native run-ios`
-* For Android run `react-native run-ios`
+* For Android run `react-native run-android`
 
 ## Explanation
 
