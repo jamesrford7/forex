@@ -1,5 +1,7 @@
 package com.forex;
 
+import android.os.Build;
+
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -18,6 +20,11 @@ public class EmulatorModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void getEmulatorStatus(Promise promise) {
-        promise.resolve("You are running on an emulator");
+        if (Build.FINGERPRINT.contains("generic")) {
+                promise.resolve("You are running on an emulator");
+        }
+        else {
+            promise.resolve("You are running on a real device");
+        }
     }
 }

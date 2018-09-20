@@ -19,7 +19,11 @@ RCT_REMAP_METHOD(getEmulatorStatus,
                  findEventsWithResolver:(RCTPromiseResolveBlock)resolve
                  rejecter:(RCTPromiseRejectBlock)reject)
 {
-    resolve(@"IOS Emulator");
+    #if TARGET_IPHONE_SIMULATOR
+      resolve(@"You are running on an emulator");
+    #else
+      resolve(@"You are running on a real device");
+    #endif
 }
 
 @end
